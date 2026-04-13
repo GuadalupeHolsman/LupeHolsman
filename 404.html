@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lupe Holsman</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+        /* ── Language Switch ─────────────────────────────────────── */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: none;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 2rem;
+            padding: 0.35rem 0.75rem;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: 0.5px;
+            transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .lang-switch:hover {
+            border-color: var(--primary);
+            background: rgba(245, 0, 65, 0.04);
+            transform: translateY(-1px);
+        }
+
+        .lang-flag {
+            font-size: 1rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-switch:hover .lang-flag {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 360px) {
+            .lang-label { display: none; }
+        }
+
+        .lang-fade {
+            animation: langFadeIn 0.35s ease both;
+        }
+
+        @keyframes langFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── 404 Page ────────────────────────────────────────────── */
+        .page-404 {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-code {
+            font-size: clamp(7rem, 20vw, 14rem);
+            font-weight: 800;
+            line-height: 1;
+            color: #f0f0f0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            z-index: 0;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .error-content {
+            position: relative;
+            z-index: 1;
+            max-width: 520px;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .error-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .error-title {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .error-title span {
+            color: var(--primary);
+        }
+
+        .error-subtitle {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn-outline {
+            padding: 0.75rem 1.4rem;
+            border-radius: 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-block;
+            border: 2px solid var(--dark);
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .error-character {
+            position: absolute;
+            bottom: 0;
+            right: 5%;
+            width: clamp(160px, 22vw, 300px);
+            opacity: 0;
+            transform: translateX(60px);
+            animation: slideInChar 0.9s ease-out 0.5s forwards;
+            pointer-events: none;
+        }
+
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            color: var(--cyan);
+            animation: glitch1 3s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+        }
+
+        .glitch::after {
+            color: var(--primary);
+            animation: glitch2 3s infinite;
+            clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+        }
+
+        @keyframes glitch1 {
+            0%, 90%, 100% { transform: translate(0); }
+            92%            { transform: translate(-4px, 1px); }
+            94%            { transform: translate(4px, -1px); }
+            96%            { transform: translate(-2px, 2px); }
+        }
+
+        @keyframes glitch2 {
+            0%, 90%, 100% { transform: translate(0); }
+            92%            { transform: translate(4px, -1px); }
+            94%            { transform: translate(-4px, 1px); }
+            96%            { transform: translate(2px, -2px); }
+        }
+
+        @keyframes slideInChar {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+       
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <ul id="navLinks">
+                    <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+                    <li><a href="404.html"   data-i18n="nav.about">About</a></li>
+                    <li><a href="404.html"   data-i18n="nav.work">My Work</a></li>
+                </ul>
+                <div class="nav-right">
+                    <button class="lang-switch" id="langSwitch" aria-label="Switch language">
+                        <span class="lang-flag" id="langFlag">🇦🇷</span>
+                        <span class="lang-label" id="langLabel">ES</span>
+                    </button>
+                    <a href="index.html#contact" class="btn" data-i18n="nav.contact">Get in touch</a>
+                    <button class="hamburger" id="hamburger" aria-label="Menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-404">
+
+        <!-- Fondo decorativo -->
+        <div class="dot dot-1"></div>
+        <div class="dot dot-2"></div>
+        <div class="error-code">404</div>
+
+        <div class="error-content">
+            <span class="error-tag">Error 404</span>
+
+            <h1 class="error-title">
+                <span data-i18n="error.titleLine1">This page is still</span><br>
+                <span class="glitch" id="glitchSpan" data-i18n="error.titleLine2" data-text="in progress.">in progress.</span>
+            </h1>
+
+            <p class="error-subtitle" data-i18n="error.subtitle">
+                You found the one thing Lupe hasn't designed yet.<br>
+                Portfolio coming soon — the best work takes time.
+            </p>
+
+            <div class="error-actions">
+                <a href="index.html"          class="btn"         data-i18n="error.btnHome">Back to home</a>
+                <a href="index.html#contact"  class="btn-outline" data-i18n="error.btnContact">Get in touch</a>
+            </div>
+        </div>
+
+        <!-- Personaje en la esquina -->
+        <img
+            src="img/IMG_2661 1.png"
+            alt="Lupe character"
+            class="error-character"
+        >
+
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>LUPE HOLSMAN</h3>
+                <p data-i18n="footer.role">Multimedia Designer</p>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-contact">
+                <p>+54 221 596 4111</p>
+                <p>guadalupeholsman@gmail.com</p>
+                <p>La Plata, Buenos Aires, Argentina</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><img src="img/icon-whatsapp.png" alt="WhatsApp"></a>
+                <a href="#" class="social-icon"><img src="img/icon-linkedin.png" alt="LinkedIn"></a>
+                <a href="#" class="social-icon"><img src="img/icon-instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        // ══════════════════════════════════════════════════════════════════
+        //  TRADUCCIONES 404
+        // ══════════════════════════════════════════════════════════════════
+        const translations = {
+            en: {
+                nav: {
+                    home:    'Home',
+                    about:   'About',
+                    work:    'My Work',
+                    contact: 'Get in touch'
+                },
+                error: {
+                    titleLine1: 'This page is still',
+                    titleLine2: 'in progress.',
+                    subtitle:   "You found the one thing Lupe hasn't designed yet.<br>Portfolio coming soon — the best work takes time.",
+                    btnHome:    'Back to home',
+                    btnContact: 'Get in touch'
+                },
+                footer: { role: 'Multimedia Designer' }
+            },
+            es: {
+                nav: {
+                    home:    'Inicio',
+                    about:   'Sobre mí',
+                    work:    'Mi trabajo',
+                    contact: 'Contactame'
+                },
+                error: {
+                    titleLine1: 'Esta página sigue',
+                    titleLine2: 'en construcción.',
+                    subtitle:   'Encontraste lo único que Lupe todavía no diseñó.<br>Portfolio próximamente — lo mejor lleva su tiempo.',
+                    btnHome:    'Volver al inicio',
+                    btnContact: 'Contactame'
+                },
+                footer: { role: 'Diseñadora Multimedia' }
+            }
+        };
+
+        // ══════════════════════════════════════════════════════════════════
+        //  MOTOR DE TRADUCCIÓN
+        // ══════════════════════════════════════════════════════════════════
+        function getT(lang, key) {
+            return key.split('.').reduce((obj, k) => (obj && obj[k] !== undefined ? obj[k] : null), translations[lang]);
+        }
+
+        function applyLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const val = getT(lang, el.dataset.i18n);
+                if (val !== null) {
+                    el.innerHTML = val;
+                    el.classList.add('lang-fade');
+                    el.addEventListener('animationend', () => el.classList.remove('lang-fade'), { once: true });
+                }
+            });
+
+            // Sync glitch data-text attribute with translated text
+            const glitch = document.getElementById('glitchSpan');
+            if (glitch) {
+                const val = getT(lang, 'error.titleLine2');
+                if (val) glitch.setAttribute('data-text', val);
+            }
+
+            document.documentElement.lang = lang;
+
+            const isES = lang === 'es';
+            document.getElementById('langFlag').textContent  = isES ? '🇺🇸' : '🇦🇷';
+            document.getElementById('langLabel').textContent = isES ? 'EN' : 'ES';
+        }
+
+        // ══════════════════════════════════════════════════════════════════
+        //  ESTADO & TOGGLE
+        // ══════════════════════════════════════════════════════════════════
+        let currentLang = localStorage.getItem('lupe-lang') || 'en';
+        applyLang(currentLang);
+
+        document.getElementById('langSwitch').addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            localStorage.setItem('lupe-lang', currentLang);
+            applyLang(currentLang);
+        });
+
+        // ══════════════════════════════════════════════════════════════════
+        //  HAMBURGER MENU
+        // ══════════════════════════════════════════════════════════════════
+        const hamburger = document.getElementById('hamburger');
+        const navLinks  = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            navLinks.classList.toggle('mobile-open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                navLinks.classList.remove('mobile-open');
+            });
+        });
+
+    </script>
+
+</body>
+</html>
